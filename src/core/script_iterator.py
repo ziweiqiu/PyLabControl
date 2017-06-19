@@ -205,17 +205,18 @@ Script.
                         # can't add None values
                         if self.scripts[script_name].data[key] is None:
                             continue
-                        # if subscript data have differnet length, e.g. fitparameters can be differet, depending on if there is one or two peaks
-                        if len(self.data[key]) != len(self.scripts[script_name].data[key]):
-                            print('warning subscript data {:s} have differnt lenghts'.format(key))
-                            continue
-
-                        if isinstance(self.data[key], list):
-                            self.data[key] += np.array(self.scripts[script_name].data[key])
-                        elif isinstance(self.data[key], dict):
-                            self.data[key] = {x: self.data[key].get(x, 0) + self.scripts[script_name].data[key].get(x, 0) for x in self.data[key].keys()}
                         else:
-                            self.data[key] += self.scripts[script_name].data[key]
+                            # if subscript data have differnet length, e.g. fitparameters can be differet, depending on if there is one or two peaks
+                            if len(self.data[key]) != len(self.scripts[script_name].data[key]):
+                                print('warning subscript data {:s} have differnt lenghts'.format(key))
+                                continue
+
+                            if isinstance(self.data[key], list):
+                                self.data[key] += np.array(self.scripts[script_name].data[key])
+                            elif isinstance(self.data[key], dict):
+                                self.data[key] = {x: self.data[key].get(x, 0) + self.scripts[script_name].data[key].get(x, 0) for x in self.data[key].keys()}
+                            else:
+                                self.data[key] += self.scripts[script_name].data[key]
 
             if not self._abort:
 
@@ -225,8 +226,9 @@ Script.
                         self.data[key] = np.array(self.data[key]) / N_points
                     elif isinstance(self.data[key], dict):
                         self.data[key] = {k:v/N_points for k, v in self.data[key].iteritems()}
-                    elif isinstance(self.data[key], None):
+                    elif self.data[key] is None:
                         print('JG none type in data!! check code')
+                        pass
                     elif isinstance(self.data[key], int):
                         self.data[key] = float(self.data[key]) / N_points # if int we can not devide. Thus we convert explicitely to float
                     else:
