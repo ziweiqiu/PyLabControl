@@ -216,9 +216,9 @@ def export(target_folder, source_folders = None, class_type ='all', raise_errors
 if __name__ == '__main__':
     # export scripts
     # source_folders = 'b26_toolkit'
-    source_folders = 'C:\\Users\\Experiment\\PycharmProjects\\b26_toolkit\\src\\scripts\\'
+    source_folders = 'C:\\Users\\sensing\\PycharmProjects\\PyLabControl_SensingLab\\b26_toolkit\\src\\scripts\\'
     # source_folders = 'C:\\Users\\Experiment\\PycharmProjects\\PyLabControl\\src\\scripts\\'
-    target_folder = 'C:\\Users\\Experiment\\PycharmProjects\\user_data\\scripts_auto_generated'
+    target_folder = 'C:\\Users\\sensing\\PycharmProjects\\PyLabControl_SensingLab\\sensing_script_files\\'
     export(target_folder, source_folders=source_folders, class_type='scripts', raise_errors=False)
     #
     #
