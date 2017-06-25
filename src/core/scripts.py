@@ -72,6 +72,8 @@ class Script(QObject):
             scripts (optional):  sub_scripts used in the script
             log_function(optional): function reference that takes a string
         """
+
+        # Ziwei's f0rk
         QObject.__init__(self)
 
         self._script_class = self.__class__.__name__
