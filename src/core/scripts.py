@@ -73,7 +73,7 @@ class Script(QObject):
             log_function(optional): function reference that takes a string
         """
 
-        # Ziwei's f0rk
+        # Ziwei's f0rk <___ not anymore
         QObject.__init__(self)
 
         self._script_class = self.__class__.__name__
